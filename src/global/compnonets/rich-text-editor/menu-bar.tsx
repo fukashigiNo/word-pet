@@ -11,13 +11,14 @@ import {
     AlignLeft, 
     AlignRight, 
     ListOrdered, 
-    Highlighter 
+    Highlighter,
+    Code2 
 } from 'lucide-react'
 import { Toggle } from '@/components/ui/toggle'
 import { Editor } from '@tiptap/react'
     
 
-export default function MenuBar({editor}: any) {
+export default function MenuBar({editor}: {editor: Editor | null}) {
     if (!editor) return null
     
     const Options = [
@@ -69,6 +70,10 @@ export default function MenuBar({editor}: any) {
             icon: <Highlighter className='size-4' />,
             onClick: () => editor.chain().focus().toggleHighlight().run(),
             pressed: editor.isActive("highlight")
+        }, {
+            icon: <Code2 className='size-4' />,
+            onClick: () => editor.chain().focus().setCodeBlock().run(),
+            pressed: editor.isActive("codeBlock")
         }
     ]
 
