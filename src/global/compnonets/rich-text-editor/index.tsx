@@ -19,7 +19,7 @@ export default function RichTextEditor() {
 
   return (
     <>
-    <MenuBar />
+    <MenuBar editor={editor} />
     <EditorContent editor={editor}  />
     </>
   )
