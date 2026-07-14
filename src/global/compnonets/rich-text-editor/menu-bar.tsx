@@ -14,6 +14,7 @@ import {
     Highlighter 
 } from 'lucide-react'
 import { Toggle } from '@/components/ui/toggle'
+import { Editor } from '@tiptap/react'
     
 
 export default function MenuBar({editor}: any) {
@@ -23,7 +24,7 @@ export default function MenuBar({editor}: any) {
         {
             icon: <Heading1 className='size-4' />,
             onClick: () => editor.chain().focus().toggleHeading({level: 1}).run(),
-            pressed: editor.isAtive("heading", {level: 1})
+            pressed: editor.isActive("heading", {level: 1})
         }, {
             icon: <Heading2 className='size-4' />,
             onClick: () => editor.chain().focus().toggleHeading({level: 2}).run(),
@@ -59,14 +60,14 @@ export default function MenuBar({editor}: any) {
         }, {
             icon: <List className='size-4' />,
             onClick: () => editor.chain().focus().toggleBulletList().run(),
-            pressed: editor.isActive("bulletLIst")
+            pressed: editor.isActive("bulletList")
         }, {
             icon: <ListOrdered className='size-4' />,
             onClick: () => editor.chain().focus().toggleOrderedList().run(),
             pressed: editor.isActive("orderedList")
         }, {
             icon: <Highlighter className='size-4' />,
-            onClick: () => editor.chain().focus().toggleHighLight().run(),
+            onClick: () => editor.chain().focus().toggleHighlight().run(),
             pressed: editor.isActive("highlight")
         }
     ]
@@ -76,6 +77,7 @@ export default function MenuBar({editor}: any) {
         {Options.map((item, index )=> (
             <Toggle 
             key={index}
+            pressed={item.pressed}
             // className={"" ? item.pressed : ""}
             onClick={item.onClick}
             >
